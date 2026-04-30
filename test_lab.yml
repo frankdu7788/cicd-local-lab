@@ -1,0 +1,17 @@
+---
+- name: Day 2 Baseline Test
+  hosts: localhost
+  connection: local
+  tasks:
+    - name: Verify I can create a file on this system
+      copy:
+        content: "CI/CD Lab Baseline - Day 2 Success\n"
+        dest: /tmp/lab_success.txt
+
+    - name: Read the file back to confirm
+      command: cat /tmp/lab_success.txt
+      register: file_output
+
+    - name: Show the result
+      debug:
+        msg: "The file says: {{ file_output.stdout }}"
