@@ -1,0 +1,22 @@
+name: Legion CI-CD Pipeline
+
+# 1. When should this run? 
+on:
+  push:
+    branches: [ "main" ]
+
+# 2. What should it do?
+jobs:
+  deploy-to-legion:
+    # This tells GitHub to look for YOUR runner on the Legion 7i
+    runs-on: [self-hosted, legion]
+
+    steps:
+      # Step A: Pull the code from GitHub onto the Legion 7i
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      # Step B: Run the Ansible playbook we verified yesterday
+      - name: Execute Ansible Playbook
+        run: |
+          ansible-playbook test_lab.yml
