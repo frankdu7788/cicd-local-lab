@@ -4,7 +4,7 @@
   connection: local
   tasks:
     - name: Verify I can create a file on this system
-      copy_wrong:
+      copy:
         content: "CI/CD Lab Baseline - Day 2 Success\n"
         dest: /tmp/lab_success.txt
 
